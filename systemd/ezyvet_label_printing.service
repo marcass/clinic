@@ -1,0 +1,10 @@
+[Unit]
+Description=Printing service for ezyvet labels
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c "/home/mw/bin/print_label_on_download.sh"
+
+[Install]
+WantedBy=default.target
+
