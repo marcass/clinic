@@ -1,0 +1,8 @@
+OKI scanner uses windows notations so set the ftp server as:
+\\<url> (eg \\reception)
+
+Use login session for target computer.
+
+PLace the following in vsftp.conf:
+local_root=/home/mw/Downloads/scan
+uncomment write_enable=YES
