@@ -1,3 +1,5 @@
+#systemctl --user enable ezyvet_doc_printing.service
+#systemctl --user start ezyvet_doc_printing.service
 [Unit]
 Description=Printing service for ezyvet docs
 
