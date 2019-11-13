@@ -26,7 +26,7 @@ def on_message(client, userdata, msg):
     #print 'Status = ' +str(quiet)
     print(msg.topic+' '+str(msg.payload))
     #allowed_passthrough_msg = ['Opened']
-    if 'Opened' in msg.payload:
+    if 'open' in msg.payload:
         if quiet:
             #print 'sleeping'
             return
