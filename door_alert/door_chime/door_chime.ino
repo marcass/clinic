@@ -68,7 +68,7 @@ void reconnect_MQTT() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Create a client ID
-    String clientId = (String)DOOR;
+    String clientId = "FrontDoor";
     // Attempt to connect
 //    if (client.connect(clientId.c_str())) {
     if (client.connect(clientId.c_str(),willTopic, 0, true, willMessage)) {
@@ -136,21 +136,25 @@ void check_state(){
       display.setTextSize(1);
       display.setTextColor(WHITE);
       display.setCursor(0, 0);
+      display.print("Connected to WiFi ");
+      display.println(WiFi.SSID());
+      display.setCursor(0, 20);
+      display.print("Connected to to broker ");
+      if (client.state() == 0){
+        display.println("Failed");
+      }else{
+        display.println(BROKER);
+      }
+      display.setCursor(0, 40);
       display.print("State is ");
       display.println(doorStates[door_state]);
-      display.setCursor(0, 20);
-      display.print("Open sensor = ");
-      display.println(open_reed);
-      display.setCursor(0, 40);
-      display.print("Closed sensor = ");
-      display.println(closed_reed);
       display.display();
     #endif
 //    https://pubsubclient.knolleary.net/api.html#publish2
     if (!client.connected()) {
       reconnect_MQTT();
     }
-    client.publish(DOOR_STATE, doorStates[door_state], true);
+    client.publish(D_PUB, doorStates[door_state], true);
     prev_door_state = door_state;
     //manage_led();
     delay(1000);
