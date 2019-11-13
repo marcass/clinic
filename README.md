@@ -25,6 +25,7 @@ mosquitto -d
 
 Solves the issue. Follwing this the python script needs to be started in order to start the door-chime service
 
-```systemctl start door-chime
+```
+systemctl start door-chime
 ```
 
