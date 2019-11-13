@@ -15,4 +15,16 @@
 4. enable user service unit `systemctl --user enable <systemd unit>`
 5. start serveice systemctl --user start <systemd unit>`
 
+## Starting mosquitto on C.H.I.P.
+
+On startup the systemd script fails to start mosqutto. I haven't sorted this yet, but ssh'ing into chip and running
+
+```
+mosquitto -d
+````
+
+Solves the issue. Follwing this the python script needs to be started in order to start the door-chime service
+
+```systemctl start door-chime
+```
 
