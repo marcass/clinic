@@ -1,0 +1,10 @@
+[Unit]
+Description=Door chime
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python /root/git/node_door/python/python_mqtt_client.py
+
+[Install]
+WantedBy=multi-user.target
