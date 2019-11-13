@@ -15,7 +15,7 @@ const char mqttServer[] = BROKER;
 const char DOOR_PUB[] = D_PUB;
 const int mqttPort = 1883;
 
-#define               SENSOR 25
+#define               SENSOR 13
 
 //door states
 const int             STATE_OPEN = 0;
@@ -101,8 +101,7 @@ void setup() {
   display.setTextColor(WHITE);
   display.setCursor(0, 0);
   // Display static text
-  display.print("Setting up ");
-  display.println("door sensor");
+  display.println("Setting up door");
   display.display();
   delay(2000);
   //setup digital pins
@@ -136,14 +135,14 @@ void check_state(){
       display.setTextSize(1);
       display.setTextColor(WHITE);
       display.setCursor(0, 0);
-      display.print("Connected to WiFi ");
+      display.print("WiFi = ");
       display.println(WiFi.SSID());
       display.setCursor(0, 20);
-      display.print("Connected to to broker ");
+      display.print("Broker ");
       if (client.state() == 0){
-        display.println("Failed");
-      }else{
         display.println(BROKER);
+      }else{
+        display.println("Failed");
       }
       display.setCursor(0, 40);
       display.print("State is ");
