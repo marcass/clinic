@@ -1,5 +1,7 @@
 OKI scanner uses windows notations so set the ftp server as:
 \\<url> (eg \\reception)
+setup is in profiles sectiion of printer menu
+password for pritner (not needed for this setup) is aaaaaa
 
 Use login session for target computer.
 
