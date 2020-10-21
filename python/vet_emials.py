@@ -9,23 +9,31 @@
 
 
 
+# page = requests.get("https://www.vetcouncil.org.nz/FindAVet?ID=4196")
+# soup = BeautifulSoup(page.content, 'html.parser')
+# out = list(soup.children)
+# content = out[3]
+# content = list(content.children)
+# content = content[3] #next layer
+# content = list(content.children)
+# content = content[3] #next layer
+# content = list(content.children)
+# content = content[3] #next layer
+# content = list(content.children)
+# #name and email is in content[21] here
+# name = list(content[21].children) # need to extract it from here
+# name = list(name[3].children)
+# name = list(name[1].children)
+
+# From Max:
+import requests
+from bs4 import BeautifulSoup
 page = requests.get("https://www.vetcouncil.org.nz/FindAVet?ID=4196")
 soup = BeautifulSoup(page.content, 'html.parser')
-out = list(soup.children)
-content = out[3]
-content = list(content.children)
-content = content[3] #next layer
-content = list(content.children)
-content = content[3] #next layer
-content = list(content.children)
-content = content[3] #next layer
-content = list(content.children)
-#name and email is in content[21] here
-name = list(content[21].children) # need to extract it from here
-name = list(name[3].children)
-name = list(name[1].children)
-
-
+a = soup.find_all('div', class_="ReadOnly PanelField Left")
+for i in in a:
+  t = i.get_text().strip(' \n\t').split()
+  print(len(t),t)
 
 import re
 import requests
