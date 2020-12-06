@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Printer variabls. To check names (if CUPS running) go to http://localhost:631
+LABEL=Zebra
+A4=MC342
+
 # Create a service unit in /etc/systemd/user/
 # 
 # 
@@ -18,7 +22,7 @@
 
 # start service by systemctl --user start ezyvet_doc_printing.service
 
-# Make sure this directory exists
+# Make sure this directory exists and create if it doesn't
 DOC="$HOME/Downloads/printing/"
 if [ -d "$DOC" ]; then
    echo "'$DOC' found and now copying files, please wait ..."
@@ -36,10 +40,10 @@ while read -r  events filename; do
         SIZE=`pdfinfo $DOC/$FILE | grep pts | awk '{print $3}'`
         if [[ $SIZE < 400 ]]
         then
-            lp $DOC/*.pdf -d Zebra && find $DOC -name "*.pdf" -delete
+            lp $DOC/*.pdf -d $LABEL && find $DOC -name "*.pdf" -delete
             echo "printing label"
         else
-            lp $DOC/*.pdf -d MC342 && find $DOC -name "*.pdf" -delete
+            lp $DOC/*.pdf -d $A4 && find $DOC -name "*.pdf" -delete
             echo "printing doc"
         fi
     else
