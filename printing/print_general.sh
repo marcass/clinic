@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # Printer variabls. To check names (if CUPS running) go to http://localhost:631
-LABEL=Zebra
-A4=MC342
+LABEL="Zebra"
+A4="Brother_MFC_L2770DW_series"
 
 # Create a service unit in /etc/systemd/user/
 # 
@@ -24,6 +24,8 @@ A4=MC342
 
 # Make sure this directory exists and create if it doesn't
 DOC="$HOME/Downloads/printing/"
+mkdir -p $DOC
+
 if [ -d "$DOC" ]; then
    echo "'$DOC' found and now copying files, please wait ..."
 else
