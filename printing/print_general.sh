@@ -4,7 +4,7 @@
 LABEL="Zebra"
 A4="Brother_MFC_L2770DW_series"
 
-# Create a service unit in /etc/systemd/user/
+# Create a service unit in /etc/systemd/user/printing.service
 # 
 # 
 # [Unit]
@@ -19,8 +19,11 @@ A4="Brother_MFC_L2770DW_series"
 
 # 
 # 
+# enable service:
+# systemctl --user enable printing.service
 
-# start service by systemctl --user start ezyvet_doc_printing.service
+# start service:
+# systemctl --user start printing.service
 
 # Make sure this directory exists and create if it doesn't
 DOC="$HOME/Downloads/printing/"
